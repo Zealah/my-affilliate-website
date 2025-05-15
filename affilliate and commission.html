@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShaddyKE Bingwa Sokoni Affiliate Program - Sign Up & Program Selection</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        h2 {
+            text-align: center;
+            color: #28a745; /* Bingwa Sokoni green - adjust as needed */
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .checkbox-group {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #28a745; /* Bingwa Sokoni green - adjust as needed */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #1e7e34; /* Darker shade of green */
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .terms-conditions {
+            font-size: 14px;
+            color: #555;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .terms-conditions a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .terms-conditions a:hover {
+            text-decoration: underline;
+        }
+        #selected-programs {
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        #program-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #program-table th, #program-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        #program-table th {
+            background-color: #f2f2f2;
+        }
+        .section-divider {
+            border-top: 2px solid #ccc;
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Welcome to ShaddyKE Bingwa Sokoni Affiliate Program</h2>
+        <form id="affiliateSignupForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (e.g., 07xxxxxxxx):</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="07xxxxxxxx" required>
+                <small>Please enter a valid Kenyan phone number.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="websiteOrSocial">Website/Social Media Link (Where you'll promote Bingwa Sokoni):</label>
+                <input type="text" id="websiteOrSocial" name="websiteOrSocial">
+                <small>e.g., Your website URL, Facebook page link, Instagram profile link, WhatsApp page link.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentDetails">Payment Details (e.g., M-Pesa Name & Number):</label>
+                <input type="text" id="paymentDetails" name="paymentDetails" placeholder="e.g., John Doe - 07xxxxxxxxx" required>
+                <small>How you would like to receive your affiliate earnings.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <p id="passwordMatch" class="error-message"></p>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a>.</label>
+            </div>
+
+            <h2 class="section-divider">Select Bingwa Sokoni Programs</h2>
+
+            <div class="form-group">
+                <label for="category">Select Category:</label>
+                <select id="category" name="category">
+                    <option value="">-- Select a Category --</option>
+                    <option value="bingwa_bundles">Bingwa Bundles</option>
+                    <option value="bingwa_airtime">Bingwa Airtime</option>
+                    <option value="bingwa_devices">Bingwa Devices</option>
+                    <option value="bingwa_minutes">Bingwa Minutes</option>
+                    <option value="bingwa_SMS">Bingwa SMS</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="program">Select Program:</label>
+                <select id="program" name="program">
+                    <option value="">-- Select a Program --</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="addSelectedProgram()">Add Program to Selection</button>
+
+            <div id="selected-programs">
+                <h3>Selected Bingwa Sokoni Programs:</h3>
+                <table id="program-table">
+                    <thead>
+                        <tr>
+                            <th>Program Name</th>
+                            <th>Sales</th>
+                            <th>Commission</th>
+                        </tr>
+                    </thead>
+                    <tbody id="program-list">
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="submit">Sign Up & Apply</button>
+
+            <p class="terms-conditions">Already have an account? <a href="/login">Log In</a></p>
+        </form>
+    </div>
+
+    <script>
+      const express = require('express');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const sqlite3 = require('sqlite3').verbose(); // For SQLite
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+
+// Initialize SQLite database (replace with your database setup)
+const db = new sqlite3.Database('./affiliate_data.db', (err) => {
+    if (err) {
+        console.error("Error opening database " + err.message);
+    } else {
+        console.log("Successfully opened the database");
+        db.run(`
+            CREATE TABLE IF NOT EXISTS affiliates (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                firstName TEXT NOT NULL,
+                lastName TEXT NOT NULL,
+                email TEXT NOT NULL UNIQUE,
+                phone TEXT NOT NULL,
+                websiteOrSocial TEXT,
+                paymentDetails TEXT NOT NULL,
+                passwordHash TEXT NOT NULL,
+                selectedPrograms TEXT
+            )
+        `);
+    }
+});
+
+app.post('/api/affiliate/signup', async (req, res) => {
+    const { firstName, lastName, email, phone, websiteOrSocial, paymentDetails, password, selectedPrograms } = req.body;
+
+    // 1. Server-side validation
+    if (!firstName || !lastName || !email || !phone || !paymentDetails || !password || !Array.isArray(selectedPrograms)) {
+        return res.status(400).json({ success: false, error: 'All required fields must be provided.' });
+    }
+
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ success: false, error: 'Invalid email format.' });
+    }
+
+    if (password.length < 6) {
+        return res.status(400).json({ success: false, error: 'Password must be at least 6 characters long.' });
+    }
+
+    try {
+        // 2. Hash the password
+        const saltRounds = 10;
+        const passwordHash = await bcrypt.hash(password, saltRounds);
+
+        // 3. Store user information in the database
+        db.run(
+            `INSERT INTO affiliates (firstName, lastName, email, phone, websiteOrSocial, paymentDetails, passwordHash, selectedPrograms) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            [firstName, lastName, email, phone, websiteOrSocial, paymentDetails, passwordHash, JSON.stringify(selectedPrograms)],
+            function (err) {
+                if (err) {
+                    if (err.code === 'SQLITE_CONSTRAINT' && err.message.includes('UNIQUE constraint failed: affiliates.email')) {
+                        return res.status(409).json({ success: false, error: 'Email address already exists.' });
+                    }
+                    console.error('Database error:', err);
+                    return res.status(500).json({ success: false, error: 'Failed to create affiliate account.' });
+                }
+                // 4. Send success response
+                res.status(201).json({ success: true, message: 'Affiliate account created successfully!' });
+                // 5. (Optional) Send confirmation email - Implement this using a library like Nodemailer
+            }
+        );
+    } catch (error) {
+        console.error('Error during signup:', error);
+        res.status(500).json({ success: false, error: 'An unexpected error occurred during signup.' });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
+    </script>
+
+</body>
+</html>
